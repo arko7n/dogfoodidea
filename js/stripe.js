@@ -6,6 +6,7 @@ WildRydes.map = WildRydes.map || {};
     // Register click handler for #request button
     $(function onDocReady() {
         $('#checkoutButton').click(createCheckoutSession);
+        handleRedirectToMerchant();
     });
     
     function handleRequestClick(event) {
@@ -36,5 +37,11 @@ WildRydes.map = WildRydes.map || {};
 
         // Redirect customer
         window.location = stripeCheckoutSession.url;
+    }
+    
+    function handleRedirectToMerchant() {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        console.log(params);
     }
 }(jQuery));
