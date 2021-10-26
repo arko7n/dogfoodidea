@@ -37,6 +37,7 @@ form {
 #payment-message {
   color: rgb(255 255 255);
   text-align: center;
+  background: #f50856;
 }
 
 #payment-element {

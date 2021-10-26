@@ -15,6 +15,8 @@ document
 
 // Fetches a payment intent and captures the client secret
 async function initialize() {
+  setLoading(false);
+  
   const response = await fetch("https://749ruwi05l.execute-api.us-west-2.amazonaws.com/prod/checkout-sessions", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
