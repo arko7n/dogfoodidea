@@ -29,6 +29,8 @@
     <button class="home-button" id="checkoutButton">Book a unicorn</button>
   </header>
   
+  <h2 id="payment-message" class="hidden"></h2>
+  
   <!-- Display a payment form -->
   <div id="div-stripe">
     <form id="form-stripe">
@@ -39,7 +41,6 @@
         <div class="spinner hidden" id="spinner"></div>
         <span id="button-text">Pay now</span>
       </button>
-      <div id="payment-message" class="hidden"></div>
     </form>
   </div>
 
@@ -171,8 +172,8 @@
   <script src="js/vendor.js"></script>
 
   <script src="js/main.js"></script>
-  <script src="js/stripe-checkout-session.js"></script>
   <script src="https://js.stripe.com/v3/"></script>
   <script src="js/stripe-payment-element.js" defer></script>
+  <script src="js/stripe-checkout-session.js"></script>
 </body>
 </html>

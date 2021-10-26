@@ -14,12 +14,11 @@ WildRydes.map = WildRydes.map || {};
     }
     
     function createCheckoutSession() {
-        console.log("Hello!");
         $.ajax({
             method: 'POST',
             url: 'https://749ruwi05l.execute-api.us-west-2.amazonaws.com/prod/checkout-sessions',
             data: JSON.stringify({
-                orderContext: "Blah blah"
+                checkoutCategory: "CheckoutSession"
             }),
             contentType: 'application/json',
             success: proceedToStripeCheckout,

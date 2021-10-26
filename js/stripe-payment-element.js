@@ -18,7 +18,10 @@ async function initialize() {
   const response = await fetch("https://749ruwi05l.execute-api.us-west-2.amazonaws.com/prod/checkout-sessions", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ items }),
+    body: JSON.stringify({ 
+      checkoutCategory: "PaymentElement",
+      items: items,
+    }),
   });
   const { clientSecret } = await response.json();
 
@@ -87,15 +90,20 @@ async function checkStatus() {
 // ------- UI helpers -------
 
 function showMessage(messageText) {
+  const stripeDiv = document.querySelector("#div-stripe");
+  stripeDiv.classList.add("hidden");
+  
   const messageContainer = document.querySelector("#payment-message");
-
   messageContainer.classList.remove("hidden");
   messageContainer.textContent = messageText;
+  
+  console.log(messageText);
 
   setTimeout(function () {
     messageContainer.classList.add("hidden");
     messageText.textContent = "";
-  }, 4000);
+    stripeDiv.classList.remove("hidden");
+  }, 5000);
 }
 
 // Show a spinner on payment submission
