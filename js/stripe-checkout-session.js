@@ -14,11 +14,15 @@ WildRydes.map = WildRydes.map || {};
     }
     
     function createCheckoutSession() {
+        const checkoutCategory = document.querySelector('input[name="stripeSelection"]:checked').value;
+        
+        console.log("Checkout category: " + checkoutCategory);
+        
         $.ajax({
             method: 'POST',
             url: 'https://749ruwi05l.execute-api.us-west-2.amazonaws.com/prod/checkout-sessions',
             data: JSON.stringify({
-                checkoutCategory: "CheckoutSession"
+                checkoutCategory: checkoutCategory
             }),
             contentType: 'application/json',
             success: proceedToStripeCheckout,
@@ -31,8 +35,6 @@ WildRydes.map = WildRydes.map || {};
     }
     
     function proceedToStripeCheckout(stripeCheckoutSession) {
-        var unicorn;
-        var pronoun;
         console.log('Response received from API: ', stripeCheckoutSession);
 
         // Redirect customer
