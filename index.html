@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" href="css/font.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/stripe-payment-element.css" />
 
   <script src="js/vendor/modernizr.js"></script>
 </head>
@@ -25,8 +26,22 @@
       </ul>
     </nav>
     <button type="button" class="btn-menu"><span>Menu</span></button>
-    <button class="home-button" id="checkoutButton">Book a unicorn!</a>
+    <button class="home-button" id="checkoutButton">Book a unicorn</button>
   </header>
+  
+  <!-- Display a payment form -->
+  <div id="div-stripe">
+    <form id="form-stripe">
+      <div id="payment-element">
+        <!--Stripe.js injects the Payment Element-->
+      </div>
+      <button id="button-submit-stripe">
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay now</span>
+      </button>
+      <div id="payment-message" class="hidden"></div>
+    </form>
+  </div>
 
   <section class="home-about">
     <div class="row column large-9 xlarge-6 xxlarge-4">
@@ -156,6 +171,8 @@
   <script src="js/vendor.js"></script>
 
   <script src="js/main.js"></script>
-  <script src="js/stripe.js"></script>
+  <script src="js/stripe-checkout-session.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="js/stripe-payment-element.js" defer></script>
 </body>
 </html>
