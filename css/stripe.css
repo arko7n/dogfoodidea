@@ -29,15 +29,33 @@ form {
   display: none;
 }
 
-#div-stripe {
-  text-align: -webkit-center;
+.site-header {
   background: #f50856;
+}
+
+#div-payment {
+  transform: translateY(-40%);
+  text-align: center;
+}
+
+#div-stripe-selection {
+  text-align: -webkit-center;
+}
+
+#div-stripe-selection-internal {
+  text-align: left;
+  font-weight: bold;
+  width: fit-content;
+  color: rgb(255 255 255);
+}
+
+#div-stripe-payment-container {
+  text-align: -webkit-center;
 }
 
 #payment-message {
   color: rgb(255 255 255);
   text-align: center;
-  background: #f50856;
 }
 
 #payment-element {
@@ -45,6 +63,15 @@ form {
 }
 
 /* Buttons and links */
+
+#checkoutButton {
+  position: relative;
+  left: 0%;
+  bottom: 0%;
+  -webkit-transform: translateX(-0%);
+  transform: translateX(-0%);
+}
+
 #button-submit-stripe {
   background: #5469d4;
   font-family: Arial, sans-serif;
@@ -69,6 +96,7 @@ form {
 }
 
 /* spinner/processing state, errors */
+
 .spinner,
 .spinner:before,
 .spinner:after {

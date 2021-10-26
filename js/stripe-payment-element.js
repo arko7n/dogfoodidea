@@ -6,7 +6,7 @@ const items = [{ id: "xl-tshirt" }];
 
 let elements;
 
-initialize();
+// initializeStripePaymentElement();
 checkStatus();
 
 document
@@ -14,9 +14,7 @@ document
   .addEventListener("submit", handleSubmit);
 
 // Fetches a payment intent and captures the client secret
-async function initialize() {
-  setLoading(false);
-  
+async function initializeStripePaymentElement() {
   const response = await fetch("https://749ruwi05l.execute-api.us-west-2.amazonaws.com/prod/checkout-sessions", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -34,6 +32,10 @@ async function initialize() {
 
   const paymentElement = elements.create("payment");
   paymentElement.mount("#payment-element");
+  
+  const stripeDiv = document.querySelector("#div-stripe-payment-container");
+  stripeDiv.classList.remove("hidden");
+  setLoading(false);
 }
 
 async function handleSubmit(e) {
@@ -92,9 +94,6 @@ async function checkStatus() {
 // ------- UI helpers -------
 
 function showMessage(messageText) {
-  const stripeDiv = document.querySelector("#div-stripe");
-  stripeDiv.classList.add("hidden");
-  
   const messageContainer = document.querySelector("#payment-message");
   messageContainer.classList.remove("hidden");
   messageContainer.textContent = messageText;
@@ -104,7 +103,6 @@ function showMessage(messageText) {
   setTimeout(function () {
     messageContainer.classList.add("hidden");
     messageText.textContent = "";
-    stripeDiv.classList.remove("hidden");
   }, 5000);
 }
 
@@ -121,3 +119,5 @@ function setLoading(isLoading) {
     document.querySelector("#button-text").classList.remove("hidden");
   }
 }
+
+export { initializeStripePaymentElement };

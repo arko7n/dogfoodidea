@@ -42,6 +42,6 @@ WildRydes.map = WildRydes.map || {};
     function handleRedirectToMerchant() {
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
-        console.log(params);
+        console.log('Redirect back to merchant params: ' + params);
     }
 }(jQuery));

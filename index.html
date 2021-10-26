@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="css/font.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/stripe-payment-element.css" />
+  <link rel="stylesheet" href="css/stripe.css" />
 
   <script src="js/vendor/modernizr.js"></script>
 </head>
@@ -25,25 +25,43 @@
         <li><a href="apply.html">Apply</a></li>
       </ul>
     </nav>
+    
     <button type="button" class="btn-menu"><span>Menu</span></button>
-    <button class="home-button" id="checkoutButton">Book a unicorn</button>
+    
+    <div id="div-payment">
+      <h2 id="payment-message" class="hidden">Hiya!</h2>
+      
+      <div id="div-stripe-selection">
+        <div id="div-stripe-selection-internal">
+          <p>Select checkout experience:</p>
+          <input type="radio" id="radio-checkoutSession" name="fav_language" value="CheckoutSession">
+          <label for="radio-checkoutSession">Single payment with Stripe Checkout (hosted)</label><br>
+          <input type="radio" id="radio-checkoutSessionSubscription" name="fav_language" value="CheckoutSessionSubscription">
+          <label for="radio-checkoutSessionSubscription">Subscription with Stripe Checkout (hosted)</label><br>
+          <input type="radio" id="radio-paymentElement" name="fav_language" value="PaymentElement">
+          <label for="radio-paymentElement">Single payment with Stripe Payment Element (widget)</label><br>
+          <input type="radio" id="radio-paymentElementSubscription" name="fav_language" value="PaymentElementSubscription">
+          <label for="radio-paymentElementSubscription">Subscription with Stripe Payment Element (widget)</label><br>
+        </div>
+      </div>
+    
+      <button class="home-button hidden" id="checkoutButton">Book a unicorn</button>
+    
+      <!-- Display a payment form -->
+      <div id="div-stripe-payment-container" class="hidden">
+        <form id="form-stripe">
+          <div id="payment-element">
+            <!--Stripe.js injects the Payment Element-->
+          </div>
+          <button id="button-submit-stripe">
+            <div class="spinner hidden" id="spinner"></div>
+            <span id="button-text">Pay now</span>
+          </button>
+        </form>
+      </div>
+    </div>
   </header>
   
-  <h2 id="payment-message" class="hidden"></h2>
-  
-  <!-- Display a payment form -->
-  <div id="div-stripe">
-    <form id="form-stripe">
-      <div id="payment-element">
-        <!--Stripe.js injects the Payment Element-->
-      </div>
-      <button id="button-submit-stripe">
-        <div class="spinner hidden" id="spinner"></div>
-        <span id="button-text">Pay now</span>
-      </button>
-    </form>
-  </div>
-
   <section class="home-about">
     <div class="row column large-9 xlarge-6 xxlarge-4">
       <h2 class="section-title">How Does This Work?</h2>
@@ -173,7 +191,8 @@
 
   <script src="js/main.js"></script>
   <script src="https://js.stripe.com/v3/"></script>
-  <script src="js/stripe-payment-element.js" defer></script>
-  <script src="js/stripe-checkout-session.js"></script>
+  <script type="module" src="js/stripe-payment-element.js" defer></script>
+  <script type="module" src="js/stripe-checkout-session.js"></script>
+  <script type="module" src="js/stripe-selection.js"></script>
 </body>
 </html>
