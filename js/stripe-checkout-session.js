@@ -15,7 +15,6 @@ WildRydes.map = WildRydes.map || {};
     
     function createCheckoutSession() {
         const checkoutCategory = document.querySelector('input[name="stripeSelection"]:checked').value;
-        
         console.log("Checkout category: " + checkoutCategory);
         
         $.ajax({

@@ -15,11 +15,14 @@ document
 
 // Fetches a payment intent and captures the client secret
 async function initializeStripePaymentElement() {
+  const checkoutCategory = document.querySelector('input[name="stripeSelection"]:checked').value;
+  console.log("Checkout category: " + checkoutCategory);
+        
   const response = await fetch("https://749ruwi05l.execute-api.us-west-2.amazonaws.com/prod/checkout-sessions", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ 
-      checkoutCategory: "PaymentElement",
+      checkoutCategory: checkoutCategory,
       items: items,
     }),
   });
@@ -102,7 +105,7 @@ function showMessage(messageText) {
 
   setTimeout(function () {
     messageContainer.classList.add("hidden");
-    messageText.textContent = "";
+    messageContainer.textContent = "";
   }, 5000);
 }
 
